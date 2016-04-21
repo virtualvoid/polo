@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Portal Locations</string>
+    <string name="portal_name">Portal Name</string>
+    <string name="portal_latitude">Latitude</string>
+    <string name="portal_longitude">Longitude</string>
+    <string name="save">Save</string>
+    <string name="saved">Saved.</string>
+    <string name="copied">Copied !</string>
+</resources>
