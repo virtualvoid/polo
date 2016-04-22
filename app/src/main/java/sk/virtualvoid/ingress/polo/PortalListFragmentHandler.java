@@ -1,4 +1,4 @@
-package sk.virtualvoid.ingress.polo.utils;
+package sk.virtualvoid.ingress.polo;
 
 import java.util.List;
 

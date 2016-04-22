@@ -29,7 +29,6 @@ import rx.schedulers.Schedulers;
 import sk.virtualvoid.ingress.polo.components.PortalLocationAdapterHandler;
 import sk.virtualvoid.ingress.polo.data.PortalDatabase;
 import sk.virtualvoid.ingress.polo.data.PortalLocation;
-import sk.virtualvoid.ingress.polo.utils.PortalListFragmentHandler;
 import sk.virtualvoid.ingress.polo.utils.WellKnownFragment;
 
 /**

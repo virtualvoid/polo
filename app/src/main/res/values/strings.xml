@@ -6,4 +6,8 @@
     <string name="save">Save</string>
     <string name="saved">Saved.</string>
     <string name="copied">Copied !</string>
+    <string name="please_enter_portal_name">Please enter portal name.</string>
+    <string name="pos_invalid_format">Invalid format.</string>
+    <string name="please_enter_correct_latitude">Please enter correct latitude.</string>
+    <string name="please_enter_correct_longitude">Please enter correct longitude.</string>
 </resources>

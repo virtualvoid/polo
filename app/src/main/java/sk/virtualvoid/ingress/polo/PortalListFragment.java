@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,6 @@ import rx.schedulers.Schedulers;
 import sk.virtualvoid.ingress.polo.components.PortalLocationAdapter;
 import sk.virtualvoid.ingress.polo.components.PortalLocationAdapterHandler;
 import sk.virtualvoid.ingress.polo.data.PortalLocation;
-import sk.virtualvoid.ingress.polo.utils.PortalListFragmentHandler;
 import sk.virtualvoid.ingress.polo.utils.WellKnownFragment;
 
 /**

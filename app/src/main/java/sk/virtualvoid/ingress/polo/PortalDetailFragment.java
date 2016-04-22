@@ -13,9 +13,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.NumberFormat;
 import java.util.Locale;
 
 import sk.virtualvoid.ingress.polo.data.PortalLocation;
+import sk.virtualvoid.ingress.polo.utils.OsHax;
 import sk.virtualvoid.ingress.polo.utils.WellKnownFragment;
 
 /**
@@ -77,9 +79,48 @@ public class PortalDetailFragment extends Fragment implements WellKnownFragment 
             case R.id.done: {
                 PortalLocation newPortalLocation = new PortalLocation();
                 newPortalLocation.setId(currentId);
-                newPortalLocation.setName(editTextName.getText().toString());
-                newPortalLocation.setLatitude(Double.parseDouble(editTextLatitude.getText().toString()));
-                newPortalLocation.setLongitude(Double.parseDouble(editTextLongitude.getText().toString()));
+
+                String name = editTextName.getText().toString();
+                if (name.length() == 0) {
+                    editTextName.setError(getContext().getString(R.string.please_enter_portal_name));
+                    return false;
+                } else {
+                    editTextName.setError(null);
+                    newPortalLocation.setName(editTextName.getText().toString());
+                }
+
+                String latitudeStr = editTextLatitude.getText().toString();
+                if (latitudeStr.length() == 0) {
+                    editTextLatitude.setError(getContext().getString(R.string.please_enter_correct_latitude));
+                    return false;
+                } else {
+                    try {
+                        double latitude = Double.parseDouble(latitudeStr);
+                        newPortalLocation.setLatitude(latitude);
+                        editTextLatitude.setError(null);
+                    } catch (NumberFormatException e) {
+                        editTextLatitude.setError(getContext().getString(R.string.pos_invalid_format));
+                        return false;
+                    }
+                }
+
+                String longitudeStr = editTextLongitude.getText().toString();
+                if (longitudeStr.length() == 0) {
+                    editTextLongitude.setError(getContext().getString(R.string.please_enter_correct_longitude));
+                    return false;
+                } else {
+                    try {
+                        double longitude = Double.parseDouble(longitudeStr);
+                        newPortalLocation.setLongitude(longitude);
+                        editTextLongitude.setError(null);
+                    } catch (NumberFormatException e) {
+                        editTextLongitude.setError(getContext().getString(R.string.pos_invalid_format));
+                        return false;
+                    }
+                }
+
+                OsHax.hideKeyboard(getActivity());
+
                 handler.onPortalDetail(newPortalLocation);
             }
             break;
