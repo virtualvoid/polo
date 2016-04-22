@@ -94,6 +94,8 @@ public class PortalListFragment extends Fragment implements WellKnownFragment {
     private void load() {
         swipeRefreshLayout.setRefreshing(true);
 
+        adapter.clearPortalLocations();
+
         handler.onDataRequested()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -101,6 +103,7 @@ public class PortalListFragment extends Fragment implements WellKnownFragment {
                     @Override
                     public void call(List<PortalLocation> portalLocations) {
                         swipeRefreshLayout.setRefreshing(false);
+
                         adapter.addPortalLocations(portalLocations);
                     }
                 });
