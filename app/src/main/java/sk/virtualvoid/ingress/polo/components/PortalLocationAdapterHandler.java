@@ -12,4 +12,6 @@ public interface PortalLocationAdapterHandler {
     ClipboardManager onClipboardManagerRequested();
 
     Observable<Boolean> onPortalLocationDelete(PortalLocation portalLocation);
+
+    void onLaunchIntel(String url);
 }

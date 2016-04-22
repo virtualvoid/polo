@@ -83,6 +83,13 @@ public class PortalLocationAdapter extends RecyclerView.Adapter<PortalLocationAd
             }
         });
 
+        holder.intelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                handler.onLaunchIntel(portalLocation.toIntelString());
+            }
+        });
+
         holder.deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,6 +117,7 @@ public class PortalLocationAdapter extends RecyclerView.Adapter<PortalLocationAd
         private TextView name;
         private TextView location;
         private TextView distance;
+        private ImageButton intelButton;
         private ImageButton deleteButton;
 
         public PortalLocationViewHolder(View itemView) {
@@ -119,6 +127,7 @@ public class PortalLocationAdapter extends RecyclerView.Adapter<PortalLocationAd
             name = (TextView) itemView.findViewById(R.id.portal_name);
             location = (TextView) itemView.findViewById(R.id.portal_location);
             distance = (TextView) itemView.findViewById(R.id.portal_distance);
+            intelButton = (ImageButton) itemView.findViewById(R.id.portal_location_intel);
             deleteButton = (ImageButton) itemView.findViewById(R.id.portal_location_delete);
         }
     }

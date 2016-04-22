@@ -85,6 +85,17 @@ public class PortalLocation implements Parcelable {
         return String.format(Locale.ENGLISH, "%f, %f", getLatitude(), getLongitude());
     }
 
+    public String toIntelString() {
+        int defaultZoom = 15;
+
+        return String.format(Locale.ENGLISH,
+                "https://www.ingress.com/intel?ll=%s&z=%d&pll=%s",
+                toString(),
+                defaultZoom,
+                toString()
+        );
+    }
+
     public static final Parcelable.Creator<PortalLocation> CREATOR = new Parcelable.Creator<PortalLocation>() {
         @Override
         public PortalLocation createFromParcel(Parcel source) {

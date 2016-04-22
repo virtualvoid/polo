@@ -109,6 +109,12 @@ public class PortalLocationsActivity extends AppCompatActivity implements Portal
     }
 
     @Override
+    public void onLaunchIntel(String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
+    }
+
+    @Override
     public Observable<Boolean> onPortalLocationDelete(final PortalLocation portalLocation) {
         final PortalDatabase database = new PortalDatabase(getApplicationContext());
 
