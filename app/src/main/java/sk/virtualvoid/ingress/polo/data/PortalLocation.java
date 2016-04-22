@@ -25,6 +25,9 @@ public class PortalLocation implements Parcelable {
     @DatabaseField
     private Double longitude;
 
+    // from previous in list (info character)
+    private Double distance;
+
     public PortalLocation() {
     }
 
@@ -67,6 +70,14 @@ public class PortalLocation implements Parcelable {
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
+    }
+
+    public Double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(Double distance) {
+        this.distance = distance;
     }
 
     @Override

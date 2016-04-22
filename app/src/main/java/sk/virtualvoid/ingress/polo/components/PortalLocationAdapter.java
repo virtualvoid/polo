@@ -65,6 +65,13 @@ public class PortalLocationAdapter extends RecyclerView.Adapter<PortalLocationAd
         holder.name.setText(portalLocation.getName());
         holder.location.setText(portalLocation.toString());
 
+        Double distance = null;
+        if ( (distance = portalLocation.getDistance()) != null) {
+            holder.distance.setText(String.format(Locale.getDefault(), "From previous: %.2f km", distance));
+        } else {
+            holder.distance.setText("");
+        }
+
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,6 +109,7 @@ public class PortalLocationAdapter extends RecyclerView.Adapter<PortalLocationAd
         private CardView cardView;
         private TextView name;
         private TextView location;
+        private TextView distance;
         private ImageButton deleteButton;
 
         public PortalLocationViewHolder(View itemView) {
@@ -110,6 +118,7 @@ public class PortalLocationAdapter extends RecyclerView.Adapter<PortalLocationAd
             cardView = (CardView) itemView.findViewById(R.id.portal_location_cv);
             name = (TextView) itemView.findViewById(R.id.portal_name);
             location = (TextView) itemView.findViewById(R.id.portal_location);
+            distance = (TextView) itemView.findViewById(R.id.portal_distance);
             deleteButton = (ImageButton) itemView.findViewById(R.id.portal_location_delete);
         }
     }

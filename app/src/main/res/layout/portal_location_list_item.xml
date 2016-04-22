@@ -37,6 +37,14 @@
                 android:layout_height="wrap_content"
                 android:text="Location"
                 android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+            <TextView
+                android:id="@+id/portal_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Distance from previous"
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
+
         </LinearLayout>
 
         <LinearLayout

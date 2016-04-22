@@ -18,6 +18,7 @@ import com.j256.ormlite.dao.Dao;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,6 +30,7 @@ import rx.schedulers.Schedulers;
 import sk.virtualvoid.ingress.polo.components.PortalLocationAdapterHandler;
 import sk.virtualvoid.ingress.polo.data.PortalDatabase;
 import sk.virtualvoid.ingress.polo.data.PortalLocation;
+import sk.virtualvoid.ingress.polo.utils.LatLngDistance;
 import sk.virtualvoid.ingress.polo.utils.WellKnownFragment;
 
 /**
@@ -137,7 +139,23 @@ public class PortalLocationsActivity extends AppCompatActivity implements Portal
             public void call(Subscriber<? super List<PortalLocation>> subscriber) {
                 Dao<PortalLocation, Long> dao = database.getPortalLocationsDao();
                 try {
+                    // query from db
                     List<PortalLocation> list = dao.queryForAll();
+
+                    // recalc distances
+                    for (int i = list.size() - 1; i >= 0; i--) {
+                        PortalLocation current = list.get(i);
+                        PortalLocation previous = (i > 0) ? list.get(i - 1) : null;
+                        if (previous == null) {
+                            continue;
+                        }
+
+                        double distance = LatLngDistance.km(current.getLatitude(), current.getLongitude(),
+                                previous.getLatitude(), previous.getLongitude());
+                        current.setDistance(distance);
+                    }
+
+                    // propagate
                     subscriber.onNext(list);
                     subscriber.onCompleted();
                 } catch (SQLException e) {
